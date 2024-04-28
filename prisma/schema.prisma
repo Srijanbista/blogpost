@@ -3,10 +3,14 @@ generator client {
   previewFeatures = ["driverAdapters"]
 }
 
+ 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL_URL") // uses connection pooling
-  directUrl = env("DATABASE_URL_URL_NON_POOLING") // uses a direct connection
+  // Uses connection pooling
+  url = env("POSTGRES_PRISMA_URL")
+  // Uses direct connection, ⚠️ make sure to keep this to `POSTGRES_URL_NON_POOLING`
+  // or you'll have dangling databases from migrations
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Post {
