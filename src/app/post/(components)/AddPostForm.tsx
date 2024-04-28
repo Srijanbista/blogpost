@@ -10,7 +10,7 @@ const postSchema = yup.object().shape({
 });
 const AddPostForm = () => {
   return (
-    <div className="w-[600px]">
+    <div className="w-[300px] md:[w-450px] lg:w-[600px]">
       <Formik
         initialValues={{
           title: "",

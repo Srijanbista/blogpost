@@ -17,7 +17,7 @@ export function BlogCard({
   content: string;
 }>) {
   return (
-    <Card className="max-w-[400px]" key={crypto.randomUUID()}>
+    <Card className="max-w-[600px]" key={crypto.randomUUID()}>
       <CardHeader className="text-2xl font-medium">{title}</CardHeader>
       <Divider />
       <CardBody>
