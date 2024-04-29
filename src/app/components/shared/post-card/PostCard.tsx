@@ -5,7 +5,7 @@ import {
   CardHeader,
   Divider,
 } from "@nextui-org/react";
-import Link from "next/link";
+import toast from "react-hot-toast";
 
 export function BlogCard({
   id,
@@ -25,9 +25,13 @@ export function BlogCard({
       </CardBody>
       <Divider />
       <CardFooter>
-        <Link href={`/post/${id}`} className="text-blue-500 hover:underline">
+        <button
+          type="button"
+          className="text-blue-500 hover:underline"
+          onClick={() => toast.success("Please wait for next release.")}
+        >
           Read More
-        </Link>
+        </button>
       </CardFooter>
     </Card>
   );

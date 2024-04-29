@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import * as yup from "yup";
 import { addPost } from "../(services)/Post.service";
 import { FormControl } from "@/app/components/shared/form-control/FormControl";
+import toast from "react-hot-toast";
 
 const postSchema = yup.object().shape({
   title: yup.string().required("Required").min(5),
@@ -22,10 +23,13 @@ const AddPostForm = () => {
             .then((res) => {
               console.log(res);
               console.log("posts added successfully");
+              toast.success("Post added");
+              resetForm();
+              setTimeout(() => {
+                window.location.reload();
+              }, 500);
             })
             .catch((err) => console.log("Error adding post"));
-          resetForm();
-          window.location.reload();
         }}
       >
         {({ values, handleChange, handleSubmit, resetForm }) => {
