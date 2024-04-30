@@ -15,11 +15,11 @@ export default function PostBase({ posts }: Readonly<{ posts: any[] }>) {
         <h2 className="text-4xl text-center mb-4">Posts</h2>
         <Suspense fallback="Loading....">
           {posts?.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-2 lg:gap-x-8 lg:gap-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-2 lg:gap-x-8 lg:gap-y-4">
               {posts.map((post: Post) => (
                 <BlogCard
                   key={post.id}
-                  id={post.title}
+                  id={post.id}
                   content={post.content}
                   title={post.title}
                 />

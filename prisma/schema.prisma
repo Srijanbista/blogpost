@@ -13,11 +13,25 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Post {
-  id        String      @id @default(uuid())
+// Define the Author model
+model Author {
+  id        String    @id @default(uuid())
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
-  title     String   @db.VarChar(255)
+  name      String    @unique @db.VarChar(255)
+  posts     Post[]    // Establishing a one-to-many relation with the Post model
+}
+
+
+// Define the Post model
+model Post {
+  id        String      @id @default(uuid())
+  createdAt DateTime?  @default(now())
+  updatedAt DateTime?  @updatedAt
+  title     String      @db.VarChar(255)
   content   String
-  published Boolean?  @default(false)
+  published Boolean?    @default(false)
+  author    Author      @relation(fields: [authorId], references: [id]) // Establishing a many-to-one relation with the Author model
+  authorId  String      // Foreign key referencing the id field of the Author model
+  authorName String     
 }
