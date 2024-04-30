@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardBody,
@@ -5,7 +6,7 @@ import {
   CardHeader,
   Divider,
 } from "@nextui-org/react";
-import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export function BlogCard({
   id,
@@ -16,19 +17,34 @@ export function BlogCard({
   title: string;
   content: string;
 }>) {
+  const router = useRouter();
   return (
-    <Card className="max-w-[600px]" key={crypto.randomUUID()}>
-      <CardHeader className="text-2xl font-medium">{title}</CardHeader>
+    <Card
+      className="max-w-[600px] hover:scale-105 transition-all ease-in-out duration-500"
+      key={crypto.randomUUID()}
+    >
+      <CardHeader>
+        <span
+          className="text-2xl font-medium h-14 w-11/12 truncate"
+          title={title}
+        >
+          {title}
+        </span>
+      </CardHeader>
       <Divider />
-      <CardBody>
-        <p>{content?.length > 0 ? content : "No content"}</p>
+      <CardBody className="h-40">
+        <p className="line-clamp-5">
+          {content?.length > 0 ? content : "No content"}
+        </p>
       </CardBody>
       <Divider />
-      <CardFooter>
+      <CardFooter className="h-10">
         <button
           type="button"
           className="text-blue-500 hover:underline"
-          onClick={() => toast.success("Please wait for next release.")}
+          onClick={() => {
+            router.push(`post/${id}`);
+          }}
         >
           Read More
         </button>
