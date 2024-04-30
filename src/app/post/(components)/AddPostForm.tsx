@@ -6,8 +6,9 @@ import { FormControl } from "@/app/components/shared/form-control/FormControl";
 import toast from "react-hot-toast";
 
 const postSchema = yup.object().shape({
-  title: yup.string().required("Required").min(5),
-  content: yup.string().required("Required").min(10),
+  title: yup.string().required("Required").min(15),
+  content: yup.string().required("Required").min(30),
+  authorName: yup.string().required("Author is required."),
 });
 const AddPostForm = () => {
   return (
@@ -16,6 +17,7 @@ const AddPostForm = () => {
         initialValues={{
           title: "",
           content: "",
+          authorName: "",
         }}
         validationSchema={postSchema}
         onSubmit={(values: any, { resetForm }) => {
@@ -37,6 +39,7 @@ const AddPostForm = () => {
             <Form method="post" className="flex flex-col gap-y-6">
               <FormControl name="title" placeholder="Enter title" />
               <FormControl name="content" placeholder="Enter Description" />
+              <FormControl name="authorName" placeholder="Enter Author Name" />
               <button
                 type="submit"
                 className="self-start px-8 py-2 border rounded bg-green-500 text-white focus:bg-green-400 hover:bg-green-400 hover:border-green-800"
