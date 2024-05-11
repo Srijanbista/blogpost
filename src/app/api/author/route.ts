@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       options
     );
     const users = await userResponse.json();
-    return NextResponse.json({ users });
+    return NextResponse.json({ users },{status:200});
   } catch (error) {
     console.log(error);
   }
