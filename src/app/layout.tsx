@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Provider from "./components/core/Provider";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
@@ -16,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider>
-          {children}
-          <Toaster position="top-right" />
-        </Provider>
+        <UserProvider>
+          <Provider>
+            {children}
+            <Toaster position="top-right" />
+          </Provider>
+        </UserProvider>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const postSchema = yup.object().shape({
   title: yup.string().required("Required").min(15),
   content: yup.string().required("Required").min(30),
-  authorName: yup.string().required("Author is required."),
+  authorName: yup.string().required("Required"),
 });
 const AddPostForm = () => {
   return (
